@@ -12,9 +12,7 @@ import Layout from '../layout'
 
 const history = createBrowserHistory();
 const Routes = (props) => (
-
     <BrowserRouter hisotry={history}>
-
         <ScrollTopOnRoute>
             <Layout>
                 <Switch>

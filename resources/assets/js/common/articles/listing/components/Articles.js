@@ -1,39 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Article from './Article';
-
-class Articles extends Component {
-    static displayName = 'Articles';
-    static propTypes = {
-        articles: PropTypes.array.isRequired,
-        dispatch: PropTypes.func.isRequired,
-    };
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            //
-        };
-    };
-
-    renderArticles() {
-        return this.props.articles.map((article, index) => {
+const Articles = (props) => {
+    const renderArticles = () => {
+        return props.articles.map((article, index) => {
             return <Article key={`article-${index}`}
                             index={index}
                             article={article}/>
         })
     };
-
-    render() {
-        return (<section id="components-articles">
-            <div className="container">
-                <div className="row">
-                    { this.props.articles && this.renderArticles() }
-                </div>
+    return <section id="components-articles">
+        <div className="container">
+            <div className="row">
+                { props.articles && renderArticles() }
             </div>
-        </section>)
-    };
+        </div>
+    </section>
 }
+
+Articles.ropTypes = {
+    index: PropTypes.number.isRequired,
+    article: PropTypes.object.isRequired,
+};
 
 export default Articles;

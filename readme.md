@@ -22,6 +22,7 @@ Open a terminal window and install the passport using following command
 Copy the keys for personal and password grants in `.env` file
 
 ```
+
 PERSONAL_CLIENT_ID=1
 PERSONAL_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 PASSWORD_CLIENT_ID=2

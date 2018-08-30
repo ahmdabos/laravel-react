@@ -5,19 +5,13 @@ import PropTypes from 'prop-types';
 // import components
 import {Link} from 'react-router-dom';
 
-const displayName = 'ArticleComponent';
-const propTypes = {
-    index: PropTypes.number.isRequired,
-    article: PropTypes.object.isRequired,
-};
-
 // const renderAuthor = (article) => {
 //   return article.user && `By ${ article.user.name }`
 // }
 
 const renderPublishedAt = (article) => {
     return article.publishedAt && `at ${article.publishedAt.format('MMMM D, YYYY')}`
-};
+}
 
 const Article = ({article}) => {
     return <div className="col-12 col-sm-9 mb-5 mx-auto">
@@ -32,7 +26,9 @@ const Article = ({article}) => {
     </div>
 }
 
-Article.displayName = displayName;
-Article.propTypes = propTypes;
+Article.propTypes = {
+    index: PropTypes.number.isRequired,
+    article: PropTypes.object.isRequired,
+}
 
 export default Article;

@@ -16,7 +16,6 @@ const containerStyle = {
     paddingTop: '3.5rem',
 }
 class Layout extends Component {
-
     componentWillMount() {
         const {isAuthenticated, user} = this.props;
         if (isAuthenticated && !user.id) {
@@ -25,7 +24,6 @@ class Layout extends Component {
     };
 
     render() {
-
         return <div style={containerStyle}>
             <Notifications/>
             <Navigation/>
