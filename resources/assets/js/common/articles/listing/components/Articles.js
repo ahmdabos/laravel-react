@@ -4,6 +4,7 @@ import Article from './Article';
 const Articles = (props) => {
     const renderArticles = () => {
         return props.articles.map((article, index) => {
+            console.log(index);
             return <Article key={`article-${index}`}
                             index={index}
                             article={article}/>
@@ -18,7 +19,7 @@ const Articles = (props) => {
     </section>
 }
 
-Articles.ropTypes = {
+Articles.propTypes = {
     index: PropTypes.number.isRequired,
     article: PropTypes.object.isRequired,
 };

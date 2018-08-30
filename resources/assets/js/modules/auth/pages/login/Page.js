@@ -13,23 +13,23 @@ import Form from './components/Form'
 class Page extends Component {
 
     constructor(props) {
-            super(props)
+        super(props)
 
-            this.validator = new ReeValidate({
-                email: 'required|email',
-                password: 'required|min:6',
-                remember: 'required'
-            })
+        this.validator = new ReeValidate({
+            email: 'required|email',
+            password: 'required|min:6',
+            remember: 'required'
+        })
 
-            // set the state of the app
-            this.state = {
-                credentials: {
-                    email: '',
-                    password: '',
-                    remember: false,
-                },
-                errors: this.validator.errors
-            }
+        // set the state of the app
+        this.state = {
+            credentials: {
+                email: '',
+                password: '',
+                remember: false,
+            },
+            errors: this.validator.errors
+        }
 
         // bind component with event handlers
         this.handleChange = this.handleChange.bind(this)
@@ -49,7 +49,7 @@ class Page extends Component {
     handleSubmit(e) {
         e.preventDefault()
         const {credentials} = this.state
-        const {errors} = this.validator
+        const {errors} = this.validator.errors
 
         this.validator.validateAll(credentials)
             .then((success) => {
@@ -65,7 +65,6 @@ class Page extends Component {
         this.props.dispatch(login(credentials))
             .catch(({error, statusCode}) => {
                 const {errors} = this.validator
-
                 if (statusCode === 422) {
                     _.forOwn(error, (message, field) => {
                         errors.add(field, message);
@@ -112,9 +111,6 @@ class Page extends Component {
     }
 }
 
-// set name of the component
-Page.displayName = 'LoginPage'
-// validate props
 Page.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
