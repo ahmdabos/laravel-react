@@ -63,8 +63,7 @@ function remove(state, id) {
 }
 
 function list(state, payload) {
-    state = Object.assign({}, payload)
-
+    state = {...state, ...payload}
     return state
 }
 
