@@ -9,7 +9,7 @@ const routes = [
     path: '/',
     exact: true,
     component: Loadable({
-      loader: () => import('./pages/home'),
+      loader: () => import('./pages/blog/listing'),
       loading: LoadingComponent,
     }),
   },
