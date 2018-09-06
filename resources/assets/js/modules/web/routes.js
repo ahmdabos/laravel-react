@@ -9,7 +9,7 @@ const routes = [
         path: '/',
         exact: true,
         component: Loadable({
-            loader: () => import('./Articles'),
+            loader: () => import('./articles/Articles'),
             loading: LoadingComponent,
         }),
     },
@@ -17,7 +17,7 @@ const routes = [
         path: '/blog',
         exact: true,
         component: Loadable({
-            loader: () => import('./Articles'),
+            loader: () => import('./articles/Articles'),
             loading: LoadingComponent,
         }),
     },
@@ -25,7 +25,7 @@ const routes = [
         path: '/blog/:slug',
         exact: true,
         component: Loadable({
-            loader: () => import('./Article'),
+            loader: () => import('./articles/details/Article'),
             loading: LoadingComponent,
         }),
     },

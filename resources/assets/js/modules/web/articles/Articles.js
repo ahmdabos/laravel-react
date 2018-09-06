@@ -1,11 +1,11 @@
 // libs
 import {connect} from 'react-redux';
-import ArticleModule from '../../../../modules/article/Article';
+import ArticleModule from '../../article/Article';
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import Article from './Article';
 // import services
-import {articleListRequest} from "../../../../modules/article/service"
+import {articleListRequest} from "../../article/service"
 class Articles extends Component {
     renderArticles = () => {
         return this.props.articles.map((article, index) => {
