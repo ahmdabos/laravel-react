@@ -1,20 +1,17 @@
 import {connect} from 'react-redux'
-import Article from '../../../../article/Article'
+import ArticleModule from '../article/Article'
 
 // import components
 // import libs
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
-import {articleFetchRequest} from '../../../../article/service';
-import {APP_TITLE} from '../../../../../values/index';
+import {articleFetchRequest} from '../article/service';
+import {APP_TITLE} from '../../values/index';
 
-class Page extends Component {
-
-
+class Article extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             //
         }
@@ -82,12 +79,12 @@ const mapStateToProps = (state, router) => {
     const {params} = router.match
     const article = state.articles.data.find(article => article.slug === params.slug)
     return {
-        article: article ? new Article(article) : new Article({})
+        article: article ? new ArticleModule(article) : new ArticleModule({})
     }
 }
-Page.propTypes = {
+Article.propTypes = {
     match: PropTypes.object.isRequired,
     article: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired
 };
-export default connect(mapStateToProps)(Page)
+export default connect(mapStateToProps)(Article)

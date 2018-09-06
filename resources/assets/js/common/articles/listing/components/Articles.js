@@ -1,6 +1,9 @@
+// libs
+import {connect} from 'react-redux';
+import ArticleModule from '../../../../modules/article/Article';
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Article from '../../../../common/articles/listing/components/Article';
+import Article from './Article';
 // import services
 import {articleListRequest} from "../../../../modules/article/service"
 class Articles extends Component {
@@ -31,4 +34,14 @@ Articles.ropTypes = {
     article: PropTypes.object.isRequired,
 };
 
-export default Articles;
+
+const mapStateToProps = state => {
+    const {data, ...meta} = state.articles;
+
+    return {
+        articles: data.map((article) => new ArticleModule(article)),
+        meta: Object.assign({}, meta)
+    }
+}
+
+export default connect(mapStateToProps)(Articles);

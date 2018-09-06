@@ -36,7 +36,7 @@ APP_URL=http://localhost:8000
 ```
 
 ## Set the APP Title
-Set the APP_TITLE in `resources/assets/js/values/index.js`
+Set the APP_TITLE in `resources/assets/js/values/Articles.js`
 
 ```angular2html
 APP_TITLE='Your Blog Name'
