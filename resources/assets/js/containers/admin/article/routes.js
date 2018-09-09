@@ -2,7 +2,7 @@
 import Loadable from 'react-loadable';
 
 // import components
-import LoadingComponent from '../../components/loader/Loader';
+import LoadingComponent from '../../../components/loader/Loader';
 
 export default [
   {
@@ -28,7 +28,7 @@ export default [
     exact: true,
     auth: true,
     component: Loadable({
-      loader: () => import('./edit'),
+      loader: () => import('./edit/edit'),
       loading: LoadingComponent,
     }),
   },

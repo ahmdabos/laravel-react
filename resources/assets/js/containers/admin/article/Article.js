@@ -1,6 +1,6 @@
 import moment from 'moment';
-import Model from '../../utils/Model';
-import User from '../../containers/user/User';
+import Model from '../../../utils/Model';
+import User from '../../../containers/user/User';
 
 class ArticleModule extends Model {
     constructor(props) {

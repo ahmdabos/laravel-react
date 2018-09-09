@@ -1,5 +1,5 @@
-import Http from '../../utils/Http'
-import Transformer from '../../utils/Transformer'
+import Http from '../../../utils/Http'
+import Transformer from '../../../utils/Transformer'
 import * as articleActions from './store/actions'
 
 function transformRequest(parms) {

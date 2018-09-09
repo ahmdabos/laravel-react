@@ -1,12 +1,12 @@
 import {connect} from 'react-redux'
-import ArticleModule from '../../../article/Article'
+import ArticleModule from '../../../admin/article/Article'
 
 // import components
 // import libs
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
-import {articleFetchRequest} from '../../../article/service';
+import {articleFetchRequest} from '../../../admin/article/service';
 import {APP_TITLE} from '../../../../utils/Values';
 
 class Article extends Component {
