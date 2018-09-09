@@ -10,7 +10,7 @@ export default [
     exact: true,
     auth: true,
     component: Loadable({
-      loader: () => import('./pages/list/Articles'),
+      loader: () => import('./list/Articles'),
       loading: LoadingComponent,
     }),
   },
@@ -19,7 +19,7 @@ export default [
     exact: true,
     auth: true,
     component: Loadable({
-      loader: () => import('./pages/add'),
+      loader: () => import('./add/Add'),
       loading: LoadingComponent,
     }),
   },
@@ -28,7 +28,7 @@ export default [
     exact: true,
     auth: true,
     component: Loadable({
-      loader: () => import('./pages/edit'),
+      loader: () => import('./edit'),
       loading: LoadingComponent,
     }),
   },

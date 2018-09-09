@@ -1,12 +1,12 @@
 // import libs
 import {connect} from 'react-redux'
-import Article from '../../Article'
+import Article from '../Article'
 
 // import libs
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import {articleListRequest, articleUpdateRequest, articleRemoveRequest} from '../../service'
+import {articleListRequest, articleUpdateRequest, articleRemoveRequest} from '../service'
 
 // import components
 import ArticleRow from './ArticleRow'

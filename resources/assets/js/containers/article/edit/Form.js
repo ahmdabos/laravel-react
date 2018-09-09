@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MyEditor from '../../../../../common/wysiwyg-editor'
+import MyEditor from '../../../components/wysiwyg-editor'
 
 const displayName = 'ArticleFrom'
 const propTypes = {
@@ -13,6 +13,7 @@ const propTypes = {
 const Form = ({article, errors, onChange, onSubmit}) => {
 
     function handleChange(name, value) {
+        console.log(onChange);
         if (value !== article[name]) {
             onChange(name, value)
         }
@@ -60,7 +61,7 @@ const Form = ({article, errors, onChange, onSubmit}) => {
     </form>
 }
 
-Form.displayName = displayName
-Form.propTypes = propTypes
+Form.displayName = displayName;
+Form.propTypes = propTypes;
 
 export default Form
