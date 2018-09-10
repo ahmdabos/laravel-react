@@ -15,31 +15,29 @@ import Form from './Form'
 // initialize component
 class Register extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.validator = new ReeValidate({
-            name: 'required|min:6',
-            email: 'required|email',
-            password: 'required|min:6',
-            passwordConfirmation: 'required|min:6'
-        })
-
-        this.state = {
-            credentials: {
-                name: '',
-                email: '',
-                password: '',
-                passwordConfirmation: '',
-            },
-            errors: this.validator.errors,
-            fields: this.validator.fields
-        }
-
+    constructor() {
+        super()
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    validator = new ReeValidate({
+        name: 'required|min:6',
+        email: 'required|email',
+        password: 'required|min:6',
+        passwordConfirmation: 'required|min:6'
+    })
+
+    state = {
+        credentials: {
+            name: '',
+            email: '',
+            password: '',
+            passwordConfirmation: '',
+        },
+        errors: this.validator.errors,
+        fields: this.validator.fields
+    }
     // event to handle input change
     handleChange(name, value) {
         const {errors} = this.validator
