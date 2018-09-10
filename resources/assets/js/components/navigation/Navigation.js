@@ -10,16 +10,16 @@ import {Link} from 'react-router-dom'
 import NavItem from './NavicationItem'
 
 class Navigation extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            showNavigation: false,
-            showDropdown: false,
-        }
-
+    constructor() {
+        super()
         this.toggleNavbar = this.toggleNavbar.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.logout = this.logout.bind(this);
+    }
+
+    state = {
+        showNavigation: false,
+        showDropdown: false,
     }
 
 
@@ -93,7 +93,6 @@ const mapStateToProps = state => {
     }
 }
 
-Navigation.displayName = 'Navigation'
 Navigation.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,

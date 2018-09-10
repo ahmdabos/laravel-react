@@ -15,9 +15,6 @@ const LoadingComponent = (props) => {
     }
 };
 
-// set display name for component
-LoadingComponent.displayName = 'CommonLoader';
-
 // validate component properties
 LoadingComponent.propTypes = {
     isLoading: PropTypes.bool,

@@ -16,8 +16,8 @@ import Form from './Form'
 // initialize component
 class Login extends Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
 
         this.validator = new ReeValidate({
             email: 'required|email',
@@ -119,7 +119,6 @@ Login.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
 }
-
 
 
 const mapStateToProps = state => {

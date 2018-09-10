@@ -16,9 +16,8 @@ import {Link} from 'react-router-dom'
 class Articles extends Component {
 
 
-    constructor(props) {
-        super(props)
-
+    constructor() {
+        super()
         this.togglePublish = this.togglePublish.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.pageChange = this.pageChange.bind(this)
@@ -26,7 +25,6 @@ class Articles extends Component {
 
     componentWillMount() {
         const {dispatch} = this.props
-
         dispatch(articleListRequest({}))
     }
 
@@ -65,6 +63,22 @@ class Articles extends Component {
     }
 
     render() {
+        let articles = null;
+        if (this.props.articles) {
+            articles = this.props.articles.map((article, index) => {
+                return <ArticleRow key={index}
+                                   article={article}
+                                   index={index}
+                                   togglePublish={this.togglePublish}
+                                   handleRemove={this.handleRemove}/>
+            })
+
+        }
+        else {
+            articles = <p>No articles yet</p>;
+        }
+
+
         return <main className="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
             <h1>Articles</h1>
             <table className="table table-responsive table-striped">
@@ -80,12 +94,13 @@ class Articles extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                { this.renderArticles() }
+                { articles }
                 </tbody>
             </table>
             <Pagination meta={this.props.meta} onChange={this.pageChange}/>
         </main>
     }
+
 }
 
 
