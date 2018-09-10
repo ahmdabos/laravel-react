@@ -9,7 +9,7 @@ const renderPublishedAt = (article) => {
     return article.publishedAt && `at ${article.publishedAt.format('MMMM D, YYYY')}`
 }
 
-const Article = ({article}) => {
+const ArticleRow = ({article}) => {
     return <div className="col-12 col-sm-9 mb-5 mx-auto">
         <div className="card">
             <div className="card-body">
@@ -22,9 +22,9 @@ const Article = ({article}) => {
     </div>
 }
 
-Article.propTypes = {
+ArticleRow.propTypes = {
     index: PropTypes.number.isRequired,
     article: PropTypes.object.isRequired,
 }
 
-export default Article;
+export default ArticleRow;

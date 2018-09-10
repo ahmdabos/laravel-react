@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import ArticleModule from '../../../admin/article/Article'
+import ArticleModule from '../ArticleModule'
 
 // import components
 // import libs
@@ -18,6 +18,7 @@ class Article extends Component {
     }
 
     componentWillMount() {
+
         this.loadArticle()
     }
 
