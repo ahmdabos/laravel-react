@@ -10,7 +10,7 @@ export default [
         path: '/login',
         exact: true,
         component: Loadable({
-            loader: () => import('./pages/login'),
+            loader: () => import('./login/Login'),
             loading: LoadingComponent,
         }),
     },
@@ -18,7 +18,7 @@ export default [
         path: '/register',
         exact: true,
         component: Loadable({
-            loader: () => import('./pages/register'),
+            loader: () => import('./register/Register'),
             loading: LoadingComponent,
         }),
     },

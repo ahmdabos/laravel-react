@@ -2,14 +2,14 @@
 import Loadable from 'react-loadable'
 
 // import components
-import LoadingComponent from '../../components/loader/Loader'
+import LoadingComponent from '../../../components/loader/Loader'
 
 const routes = [
     {
         path: '/',
         exact: true,
         component: Loadable({
-            loader: () => import('./articles/list/Articles'),
+            loader: () => import('./list/Articles'),
             loading: LoadingComponent,
         }),
     },
@@ -17,7 +17,7 @@ const routes = [
         path: '/blog',
         exact: true,
         component: Loadable({
-            loader: () => import('./articles/list/Articles'),
+            loader: () => import('./list/Articles'),
             loading: LoadingComponent,
         }),
     },
@@ -25,7 +25,7 @@ const routes = [
         path: '/blog/:slug',
         exact: true,
         component: Loadable({
-            loader: () => import('./articles/details/Article'),
+            loader: () => import('./details/Article'),
             loading: LoadingComponent,
         }),
     },

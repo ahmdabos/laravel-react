@@ -2,18 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-const displayName = 'RegisterFrom'
-
-const propTypes = {
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  passwordConfirmation: PropTypes.string.isRequired,
-  errors: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-}
-
 const Form = ({ name, email, password, passwordConfirmation, errors, handleChange, handleSubmit }) => {
   return (<form className="form" role="form" onSubmit={handleSubmit} noValidate>
     <h2 className="card-title">Sign up</h2>
@@ -74,7 +62,14 @@ const Form = ({ name, email, password, passwordConfirmation, errors, handleChang
   </form>)
 }
 
-Form.displayName = displayName
-Form.propTypes = propTypes
+Form.propTypes = {
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    passwordConfirmation: PropTypes.string.isRequired,
+    errors: PropTypes.object.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+}
 
 export default Form

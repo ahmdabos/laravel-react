@@ -25,7 +25,9 @@ class Model {
         this.updatedAt = props.updatedAt && moment(props.updatedAt) || null;
         this.deletedAt = props.deletedAt && moment(props.deletedAt) || null;
     }
+/*
 
+ */
     toJson() {
         const props = Object.assign({}, this);
         _.forOwn(props, (value, key) => {

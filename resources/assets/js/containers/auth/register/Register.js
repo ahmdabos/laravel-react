@@ -1,55 +1,61 @@
 // import libs
+import {connect} from 'react-redux'
+
+//import libs
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import {Redirect} from 'react-router-dom'
-import {login} from '../../service'
+import {register} from '../service'
 import ReeValidate from 'ree-validate'
 
 // import components
-import Form from './components/Form'
+import Form from './Form'
 
 // initialize component
-class Page extends Component {
+class Register extends Component {
 
     constructor(props) {
         super(props)
 
         this.validator = new ReeValidate({
+            name: 'required|min:6',
             email: 'required|email',
             password: 'required|min:6',
-            remember: 'required'
+            passwordConfirmation: 'required|min:6'
         })
 
-        // set the state of the app
         this.state = {
             credentials: {
+                name: '',
                 email: '',
                 password: '',
-                remember: false,
+                passwordConfirmation: '',
             },
-            errors: this.validator.errors
+            errors: this.validator.errors,
+            fields: this.validator.fields
         }
 
-        // bind component with event handlers
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     // event to handle input change
     handleChange(name, value) {
+        const {errors} = this.validator
+        this.setState({credentials: {...this.state.credentials, [name]: value}})
+        errors.remove(name)
+
         this.validator.validate(name, value)
             .then(() => {
-                this.setState(this.validator.errors)
+                this.setState({errors})
             })
-        this.setState({credentials: {...this.state.credentials, [name]: value}})
     }
 
-    // event to handle form submit
     handleSubmit(e) {
         e.preventDefault()
         const {credentials} = this.state
-        const {errors} = this.validator.errors
+        const {errors} = this.validator
 
         this.validator.validateAll(credentials)
             .then((success) => {
@@ -62,9 +68,10 @@ class Page extends Component {
     }
 
     submit(credentials) {
-        this.props.dispatch(login(credentials))
+        this.props.dispatch(register(credentials))
             .catch(({error, statusCode}) => {
                 const {errors} = this.validator
+
                 if (statusCode === 422) {
                     _.forOwn(error, (message, field) => {
                         errors.add(field, message);
@@ -77,16 +84,18 @@ class Page extends Component {
             })
     }
 
-    // render component
     render() {
         // check if user is authenticated then redirect him to home page
         if (this.props.isAuthenticated) {
             return <Redirect to="/"/>
         }
+
+        const {name, email, password, passwordConfirmation} = this.state.credentials
         const props = {
-            email: this.state.credentials.email,
-            password: this.state.credentials.password,
-            remember: this.state.credentials.remember,
+            name,
+            email,
+            password,
+            passwordConfirmation,
             errors: this.state.errors,
             handleChange: this.handleChange,
             handleSubmit: this.handleSubmit,
@@ -100,7 +109,7 @@ class Page extends Component {
                             <span className="anchor"/>
                             <div className="card has-shadow">
                                 <div className="card-body">
-                                    <Form {...props} />
+                                    <Form {...props}  />
                                 </div>
                             </div>
                         </div>
@@ -111,9 +120,14 @@ class Page extends Component {
     }
 }
 
-Page.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired
-}
 
-export default Page
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+    }
+}
+Register.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired,
+}
+export default connect(mapStateToProps)(Register)

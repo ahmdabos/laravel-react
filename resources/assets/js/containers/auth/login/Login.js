@@ -1,63 +1,59 @@
-//import libs
+// import libs
+import {connect} from 'react-redux'
+
+// import components
+// import libs
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import {Redirect} from 'react-router-dom'
-import {register} from '../../service'
+import {login} from '../service'
 import ReeValidate from 'ree-validate'
 
 // import components
-import Form from './components/Form'
+import Form from './Form'
 
 // initialize component
-class Page extends Component {
-    static displayName = 'RegisterPage'
-    static propTypes = {
-        isAuthenticated: PropTypes.bool.isRequired,
-        dispatch: PropTypes.func.isRequired,
-    }
+class Login extends Component {
 
     constructor(props) {
         super(props)
 
         this.validator = new ReeValidate({
-            name: 'required|min:6',
             email: 'required|email',
             password: 'required|min:6',
-            passwordConfirmation: 'required|min:6'
+            remember: 'required'
         })
 
+        // set the state of the app
         this.state = {
             credentials: {
-                name: '',
                 email: '',
                 password: '',
-                passwordConfirmation: '',
+                remember: false,
             },
-            errors: this.validator.errors,
-            fields: this.validator.fields
+            errors: this.validator.errors
         }
 
+        // bind component with event handlers
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     // event to handle input change
     handleChange(name, value) {
-        const {errors} = this.validator
-        this.setState({credentials: {...this.state.credentials, [name]: value}})
-        errors.remove(name)
-
         this.validator.validate(name, value)
             .then(() => {
-                this.setState({errors})
+                this.setState(this.validator.errors)
             })
+        this.setState({credentials: {...this.state.credentials, [name]: value}})
     }
 
+    // event to handle form submit
     handleSubmit(e) {
         e.preventDefault()
         const {credentials} = this.state
-        const {errors} = this.validator
+        const {errors} = this.validator.errors
 
         this.validator.validateAll(credentials)
             .then((success) => {
@@ -70,10 +66,9 @@ class Page extends Component {
     }
 
     submit(credentials) {
-        this.props.dispatch(register(credentials))
+        this.props.dispatch(login(credentials))
             .catch(({error, statusCode}) => {
                 const {errors} = this.validator
-
                 if (statusCode === 422) {
                     _.forOwn(error, (message, field) => {
                         errors.add(field, message);
@@ -86,18 +81,16 @@ class Page extends Component {
             })
     }
 
+    // render component
     render() {
         // check if user is authenticated then redirect him to home page
         if (this.props.isAuthenticated) {
             return <Redirect to="/"/>
         }
-
-        const {name, email, password, passwordConfirmation} = this.state.credentials
         const props = {
-            name,
-            email,
-            password,
-            passwordConfirmation,
+            email: this.state.credentials.email,
+            password: this.state.credentials.password,
+            remember: this.state.credentials.remember,
             errors: this.state.errors,
             handleChange: this.handleChange,
             handleSubmit: this.handleSubmit,
@@ -111,7 +104,7 @@ class Page extends Component {
                             <span className="anchor"/>
                             <div className="card has-shadow">
                                 <div className="card-body">
-                                    <Form {...props}  />
+                                    <Form {...props} />
                                 </div>
                             </div>
                         </div>
@@ -122,4 +115,17 @@ class Page extends Component {
     }
 }
 
-export default Page
+Login.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
+}
+
+
+
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+    }
+}
+
+export default connect(mapStateToProps)(Login)
