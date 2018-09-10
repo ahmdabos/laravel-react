@@ -1,22 +1,29 @@
+/* ============
+ * Container
+ * ============.
+ *
+ * Containers are used fetch the data from state
+ * and disperse to the components.
+ */
+
+// import libs
+import {connect} from 'react-redux'
+import User from '../User'
+
 // import libs
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import {userUpdateRequest} from '../../service'
+import {userUpdateRequest} from '../service'
 import ReeValidate from 'ree-validate'
 
 // import components
-import Form from './components/Form'
+import Form from './Form'
 
-class Page extends Component {
-    static displayName = 'UserPage';
-    static propTypes = {
-        user: PropTypes.object.isRequired,
-        dispatch: PropTypes.func.isRequired,
-    }
+class Edit extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.validator = new ReeValidate({
             'name': 'required|min:3',
@@ -102,4 +109,16 @@ class Page extends Component {
     }
 }
 
-export default Page
+
+// map store state as properties of the component
+const mapStateToProps = state => {
+    return {
+        user: new User(state.user)
+    }
+}
+Edit.propTypes = {
+    user: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+}
+// binding store with component
+export default connect(mapStateToProps)(Edit)

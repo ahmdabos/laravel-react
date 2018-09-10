@@ -1,13 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const displayName = 'UserFrom'
-const propTypes = {
-    user: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-}
 
 const Form = ({user, errors, onChange, onSubmit}) => {
     return <form onSubmit={e => onSubmit(e)}>
@@ -71,7 +64,11 @@ const Form = ({user, errors, onChange, onSubmit}) => {
     </form>
 }
 
-Form.displayName = displayName
-Form.propTypes = propTypes
+Form.propTypes = {
+    user: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+}
 
 export default Form

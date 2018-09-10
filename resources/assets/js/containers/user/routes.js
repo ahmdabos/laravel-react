@@ -10,7 +10,7 @@ export default [
     exact: true,
     auth: true,
     component: Loadable({
-      loader: () => import('./pages/edit'),
+      loader: () => import('./edit/Edit'),
       loading: LoadingComponent,
     }),
   },
