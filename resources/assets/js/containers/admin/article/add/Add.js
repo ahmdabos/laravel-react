@@ -2,7 +2,6 @@ import {connect} from 'react-redux'
 
 // import libs
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
 import {articleAddRequest} from '../service'
 import ReeValidate from 'ree-validate'
@@ -13,7 +12,6 @@ import Form from './Form'
 class Add extends Component {
     constructor() {
         super()
-
         this.validator = new ReeValidate({
             title: 'required|min:3',
             content: 'required|min:10',

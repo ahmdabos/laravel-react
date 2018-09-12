@@ -46,7 +46,7 @@ const Form = ({article, errors, onChange, onSubmit}) => {
         </div>
         <div className="form-group row">
             <div className="col-sm-10 ml-auto">
-                <button disabled={errors.any()} type="submit" className="btn btn-primary">Update</button>
+                <button disabled={errors.any()} type="submit" className="btn btn-primary">Add</button>
             </div>
         </div>
     </form>

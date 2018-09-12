@@ -1,6 +1,7 @@
 import Http from '../../../utils/Http'
 import Transformer from '../../../utils/Transformer'
 import * as articleActions from './store/actions'
+import {notify} from 'react-notify-toast';
 
 function transformRequest(parms) {
     return Transformer.send(parms)
@@ -16,6 +17,7 @@ export function articleAddRequest(params) {
             Http.post('/articles', transformRequest(params))
                 .then(res => {
                     dispatch(articleActions.add(transformResponse(res.data)))
+                    notify.show("Article added successfully", "success", 5000, '');
                     return resolve()
                 })
                 .catch((err) => {
@@ -33,9 +35,11 @@ export function articleAddRequest(params) {
                             replaceStr: '',
                         };
                         data.error = Transformer.resetValidationFields(resetErrors);
+
                     } else if (statusCode === 401) {
                         data.error = err.response.data.message;
                     }
+                    notify.show('Something wend wrong, Could\'not add article', error, 5000, '');
                     return reject(data);
                 })
         })
