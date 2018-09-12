@@ -39,7 +39,7 @@ export function articleAddRequest(params) {
                     } else if (statusCode === 401) {
                         data.error = err.response.data.message;
                     }
-                    notify.show('Something wend wrong, Could\'not add article', error, 5000, '');
+                    notify.show('Failed to add article', 'error', 5000, '');
                     return reject(data);
                 })
         })
@@ -52,6 +52,7 @@ export function articleUpdateRequest(params) {
             Http.patch(`articles/${params.id}`, transformRequest(params))
                 .then(res => {
                     dispatch(articleActions.add(transformResponse(res.data)))
+                    notify.show("Article updated successfully", "success", 5000, '');
                     return resolve()
                 })
                 .catch((err) => {
@@ -72,6 +73,7 @@ export function articleUpdateRequest(params) {
                     } else if (statusCode === 401) {
                         data.error = err.response.data.message;
                     }
+                    notify.show('Failed to update article', 'error', 5000, '');
                     return reject(data);
                 })
         })
@@ -83,10 +85,10 @@ export function articleRemoveRequest(id) {
         Http.delete(`articles/${id}`)
             .then(() => {
                 dispatch(articleActions.remove(id))
+                notify.show("Article removed successfully", "success", 5000, '');
             })
             .catch((err) => {
-                // TODO: handle err
-                console.error(err.response)
+                notify.show('Failed to remove article', 'error', 5000, '');
             })
     }
 }
@@ -102,8 +104,7 @@ export function articleListRequest({pageNumber = 1, url = '/articles'}) {
                 dispatch(articleActions.list(transformResponse(res.data)))
             })
             .catch((err) => {
-                // TODO: handle err
-                console.error(err.response)
+                notify.show('Failed to list article', 'error', 5000, '');
             })
     }
 }
@@ -113,10 +114,10 @@ export function articleEditRequest(id) {
         Http.get(`articles/${id}`)
             .then((res) => {
                 dispatch(articleActions.add(transformResponse(res.data)))
+
             })
             .catch((err) => {
-                // TODO: handle err
-                console.error(err.response)
+                notify.show('Failed to edit article', 'error', 5000, '');
             })
     }
 }
