@@ -58,6 +58,7 @@ export default class Transformer {
    *
    * @param param
    * @return {*}
+
    */
   static send(param) {
     if (param && Array.isArray(param)) {

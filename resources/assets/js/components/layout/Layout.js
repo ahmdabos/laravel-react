@@ -15,6 +15,9 @@ import Footer from '../../components/footer/Footer';
 const containerStyle = {
     paddingTop: '3.5rem',
 }
+/*
+
+ * */
 class Layout extends Component {
     componentWillMount() {
         const {isAuthenticated, user} = this.props;

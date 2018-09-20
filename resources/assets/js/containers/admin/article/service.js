@@ -57,6 +57,7 @@ export function articleUpdateRequest(params) {
                 })
                 .catch((err) => {
                     const statusCode = err.response.status;
+
                     const data = {
                         error: null,
                         statusCode,
@@ -129,8 +130,7 @@ export function articleFetchRequest(slug) {
                 dispatch(articleActions.add(transformResponse(res.data)))
             })
             .catch((err) => {
-                // TODO: handle err
-                console.error(err.response)
+                notify.show('Failed to list article', 'error', 5000, '');
             })
     }
 }

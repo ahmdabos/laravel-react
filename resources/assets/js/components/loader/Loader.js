@@ -19,6 +19,7 @@ const LoadingComponent = (props) => {
 LoadingComponent.propTypes = {
     isLoading: PropTypes.bool,
     error: PropTypes.object,
+
 };
 
 export default LoadingComponent
