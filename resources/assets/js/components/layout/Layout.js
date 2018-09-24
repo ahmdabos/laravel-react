@@ -16,6 +16,7 @@ const containerStyle = {
     paddingTop: '3.5rem',
 }
 /*
+Fix Website Issues, Create Website, Improve existing Website
 
  * */
 class Layout extends Component {
@@ -25,6 +26,7 @@ class Layout extends Component {
             this.props.dispatch(fetchUser())
         }
     };
+
 
     render() {
         return <div style={containerStyle}>
@@ -45,7 +47,6 @@ const mapStateToProps = state => {
         user: state.user,
     }
 };
-Layout.displayName = 'Layout';
 Layout.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
