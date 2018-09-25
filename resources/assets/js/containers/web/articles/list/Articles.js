@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import ArticleRow from './ArticleRow';
 
 // import services
-import {articleListRequest} from "../../../admin/article/service"
+import {articleListRequest} from "../service"
 
 class Articles extends Component {
     componentDidMount() {

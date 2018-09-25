@@ -46,6 +46,18 @@ export function articleAddRequest(params) {
     )
 }
 
+export function articleEditRequest(id) {
+    return dispatch => {
+        Http.get(`articles/${id}`)
+            .then((res) => {
+                dispatch(articleActions.add(transformResponse(res.data)))
+
+            })
+            .catch((err) => {
+                notify.show('Failed to edit article', 'error', 5000, '');
+            })
+    }
+}
 export function articleUpdateRequest(params) {
     return dispatch => (
         new Promise((resolve, reject) => {
@@ -110,27 +122,4 @@ export function articleListRequest({pageNumber = 1, url = '/articles'}) {
     }
 }
 
-export function articleEditRequest(id) {
-    return dispatch => {
-        Http.get(`articles/${id}`)
-            .then((res) => {
-                dispatch(articleActions.add(transformResponse(res.data)))
 
-            })
-            .catch((err) => {
-                notify.show('Failed to edit article', 'error', 5000, '');
-            })
-    }
-}
-
-export function articleFetchRequest(slug) {
-    return dispatch => {
-        Http.get(`articles/published/${slug}`)
-            .then((res) => {
-                dispatch(articleActions.add(transformResponse(res.data)))
-            })
-            .catch((err) => {
-                notify.show('Failed to list article', 'error', 5000, '');
-            })
-    }
-}
