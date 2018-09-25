@@ -46,8 +46,8 @@ const mapStateToProps = state => {
 }
 
 Articles.propTypes = {
-    index: PropTypes.number.isRequired,
-    article: PropTypes.object.isRequired,
+    index: PropTypes.number,
+    article: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(Articles);

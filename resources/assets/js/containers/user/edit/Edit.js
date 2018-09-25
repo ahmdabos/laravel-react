@@ -22,8 +22,8 @@ import Form from './Form'
 
 class Edit extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.validator = new ReeValidate({
             'name': 'required|min:3',

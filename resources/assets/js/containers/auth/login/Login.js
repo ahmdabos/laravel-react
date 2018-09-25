@@ -9,6 +9,7 @@ import _ from 'lodash'
 import {Redirect} from 'react-router-dom'
 import {login} from '../service'
 import ReeValidate from 'ree-validate'
+import {fetchUser} from '../../../containers/auth/service';
 
 // import components
 import Form from './Form'
@@ -66,19 +67,22 @@ class Login extends Component {
     }
 
     submit(credentials) {
-        this.props.dispatch(login(credentials))
-            .catch(({error, statusCode}) => {
-                const {errors} = this.validator
-                if (statusCode === 422) {
-                    _.forOwn(error, (message, field) => {
-                        errors.add(field, message);
-                    });
-                } else if (statusCode === 401) {
-                    errors.add('password', error);
-                }
+        this.props.dispatch(login(credentials)).then(res => {
+            this.props.dispatch(fetchUser())
+        }).catch(({error, statusCode}) => {
+            const {errors} = this.validator
+            if (statusCode === 422) {
+                _.forOwn(error, (message, field) => {
+                    errors.add(field, message);
+                });
+            } else if (statusCode === 401) {
+                errors.add('password', error);
+            }
 
-                this.setState({errors})
-            })
+            this.setState({errors})
+        })
+
+
     }
 
     // render component
@@ -124,6 +128,7 @@ Login.propTypes = {
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
+        dispatch: PropTypes.func.isRequired,
     }
 }
 

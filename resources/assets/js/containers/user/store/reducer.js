@@ -30,9 +30,9 @@ function unsetUser(state) {
     }
 }
 
-function authUser(state, user) {
+function authUser(state, payload) {
     return {
-        ...state, ...user
+        ...state, ...payload
     }
 }
 
