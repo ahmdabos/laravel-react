@@ -1,10 +1,3 @@
-/* ============
- * Actions for the user module
- * ============
- *
- * The actions that are available on the
- * user module.
- */
 
 import {
     USER_UPDATE,

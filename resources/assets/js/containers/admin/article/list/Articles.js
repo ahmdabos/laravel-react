@@ -79,7 +79,7 @@ class Articles extends Component {
         }
 
 
-        return <main className="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+        return <main className="col-sm-12 col-md-12" role="main">
             <h1>Articles</h1>
             <table className="table table-responsive table-striped">
                 <thead className="thead-inverse">

@@ -1,21 +1,15 @@
+//import libs
 import {connect} from 'react-redux'
 import ArticleModule from '../ArticleModule'
-
-// import components
-// import libs
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
-import {articleFetchRequest} from '../service';
 import {APP_TITLE} from '../../../../utils/Values';
 
+//import service
+import {articleFetchRequest} from '../service';
+
 class Article extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            //
-        }
-    }
 
     componentWillMount() {
         this.loadArticle()
@@ -49,7 +43,6 @@ class Article extends Component {
     }
 
     renderArticle() {
-
         const {article} = this.props
         return (<div className="col-12 col-sm-9 mb-5 mx-auto">
             <h2>{article.title}</h2>
@@ -74,13 +67,9 @@ class Article extends Component {
     }
 }
 
-
 const mapStateToProps = (state, router) => {
-    console.log(state);
     const {params} = router.match
-
     const article = state.web.data.slug === params.slug ? state.web.data : null
-
     return {
         article: article ? new ArticleModule(article) : new ArticleModule({})
     }

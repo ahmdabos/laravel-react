@@ -11,14 +11,19 @@ const routes = [
         component: Loadable({
             loader: () => import('./list/Articles'),
             loading: LoadingComponent,
+            delay: 400,
+            timeout: 10000,
         }),
     },
     {
+
         path: '/blog',
         exact: true,
         component: Loadable({
             loader: () => import('./list/Articles'),
             loading: LoadingComponent,
+            delay: 400,
+            timeout: 10000,
         }),
     },
     {
@@ -27,6 +32,8 @@ const routes = [
         component: Loadable({
             loader: () => import('./details/Article'),
             loading: LoadingComponent,
+            delay: 400,
+            timeout: 10000,
         }),
     },
 ]

@@ -1,19 +1,19 @@
-// libs
+//libs
 import {connect} from 'react-redux';
 import ArticleModule from '../ArticleModule';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ArticleRow from './ArticleRow';
 
-// import services
+//services
 import {articleListRequest} from "../service"
 
 class Articles extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.dispatch(articleListRequest({url: '/articles/published'}))
     }
 
-    render() {
+    renderArticles() {
         let articles = null;
         if (this.props.articles) {
             articles = this.props.articles.map((article, index) => {
@@ -25,10 +25,15 @@ class Articles extends Component {
         else {
             articles = <p>No articles yet!</p>;
         }
+        return articles
+    }
+
+    render() {
+
         return <section id="components-articles">
             <div className="container">
                 <div className="row">
-                    { articles }
+                    { this.renderArticles() }
                 </div>
             </div>
         </section>

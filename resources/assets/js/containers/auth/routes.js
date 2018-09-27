@@ -12,6 +12,8 @@ export default [
         component: Loadable({
             loader: () => import('./login/Login'),
             loading: LoadingComponent,
+            delay: 400,
+            timeout: 10000,
         }),
     },
     {
@@ -20,6 +22,8 @@ export default [
         component: Loadable({
             loader: () => import('./register/Register'),
             loading: LoadingComponent,
+            delay: 400,
+            timeout: 10000,
         }),
     },
 ]

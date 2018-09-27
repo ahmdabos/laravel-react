@@ -69,7 +69,7 @@ class Add extends Component {
     }
 
     render() {
-        return <div className="col-sm-9 ml-sm-auto col-md-10 pt-3">
+        return <div className="col-sm-12 col-md-12">
             <h1>Add</h1>
             <Form {...this.state}
                   onChange={this.handleChange}

@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {logout} from '../../containers/auth/service'
+import {fetchUser, logout} from '../../containers/auth/service'
 import {Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Navbar, NavbarToggler} from 'reactstrap'
 
 // import components
@@ -21,7 +21,12 @@ class Navigation extends Component {
         showNavigation: false,
         showDropdown: false,
     }
-
+    componentWillMount() {
+        const {isAuthenticated, user} = this.props;
+        if (isAuthenticated && !user.id) {
+            this.props.dispatch(fetchUser())
+        }
+    };
 
     toggleNavbar() {
         this.setState({

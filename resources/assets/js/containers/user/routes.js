@@ -5,13 +5,15 @@ import Loadable from 'react-loadable'
 import LoadingComponent from '../../components/loader/Loader'
 
 export default [
-  {
-    path: '/users/:id/edit',
-    exact: true,
-    auth: true,
-    component: Loadable({
-      loader: () => import('./edit/Edit'),
-      loading: LoadingComponent,
-    }),
-  },
+    {
+        path: '/users/:id/edit',
+        exact: true,
+        auth: true,
+        component: Loadable({
+            loader: () => import('./edit/Edit'),
+            loading: LoadingComponent,
+            delay: 400,
+            timeout: 10000,
+        }),
+    },
 ]

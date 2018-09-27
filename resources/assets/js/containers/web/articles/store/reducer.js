@@ -30,7 +30,7 @@ const reducer = (state = initialState, {type, payload = null}) => {
 }
 
 function fetch(state, payload) {
-    state = {state, ...payload}
+    state = {...state, ...payload}
     return state
 }
 
