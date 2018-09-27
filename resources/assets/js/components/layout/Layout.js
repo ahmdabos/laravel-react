@@ -1,15 +1,15 @@
 //import libs
-import React, from 'react';
-import PropTypes from 'prop-types';
-import Notifications from 'react-notify-toast';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Notifications from 'react-notify-toast'
 
 // import components
-import Navigation from '../../components/navigation/Navigation';
-import ScrollTop from '../../components/scroll-top/ScrollTop';
-import Footer from '../../components/footer/Footer';
+import Navigation from '../../components/navigation/Navigation'
+import ScrollTop from '../../components/scroll-top/ScrollTop'
+import Footer from '../../components/footer/Footer'
 
 const containerStyle = {
-    paddingTop: '3.5rem',
+    paddingTop: '3.5rem'
 }
 
 const Layout = (props) => {
@@ -27,7 +27,7 @@ const Layout = (props) => {
 
 
 Layout.propTypes = {
-    children: PropTypes.node.isRequired,
-};
-export default Layout;
+    children: PropTypes.node.isRequired
+}
+export default Layout
 
