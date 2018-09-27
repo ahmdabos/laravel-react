@@ -19,7 +19,6 @@ class Login extends Component {
 
     constructor() {
         super()
-
         this.validator = new ReeValidate({
             email: 'required|email',
             password: 'required|min:6',
@@ -39,6 +38,9 @@ class Login extends Component {
         // bind component with event handlers
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentDidMount() {
     }
 
     // event to handle input change
@@ -87,8 +89,12 @@ class Login extends Component {
 
     // render component
     render() {
-        // check if user is authenticated then redirect him to home page
+
+        // check if user is authenticated then redirect him to home page or the the page came form
         if (this.props.isAuthenticated) {
+            if (this.props.location.state) {
+                return <Redirect to={this.props.location.state.from}/>
+            }
             return <Redirect to="/"/>
         }
         const props = {

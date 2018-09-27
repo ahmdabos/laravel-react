@@ -21,6 +21,8 @@ class Articles extends Component {
         this.togglePublish = this.togglePublish.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.pageChange = this.pageChange.bind(this)
+
+
     }
 
     componentWillMount() {

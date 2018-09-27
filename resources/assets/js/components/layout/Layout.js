@@ -10,7 +10,10 @@ import Footer from '../../components/footer/Footer'
 
 const containerStyle = {
     paddingTop: '3.5rem'
+
 }
+
+//2469
 
 const Layout = (props) => {
     return <div style={containerStyle}>
@@ -22,7 +25,6 @@ const Layout = (props) => {
         </main>
         <Footer/>
     </div>
-
 }
 
 
