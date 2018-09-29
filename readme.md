@@ -1,4 +1,4 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"><img src="https://cdn-images-1.medium.com/max/2000/1*kt9otqHk14BZIMNruiG0BA.png" width="120px" style="150px"/></p>
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"><img src="https://cdn-images-1.medium.com/max/2000/1*kt9otqHk14BZIMNruiG0BA.png" width="150px" style="150px"/></p>
 
 ## Laravel 5.6 and React 16 boilerplate
 
