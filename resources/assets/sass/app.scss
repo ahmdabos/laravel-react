@@ -2,9 +2,6 @@
 @import "custom-variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
-/*
- * Dashboard
- */
 
 header {
   padding: 30px 0;
@@ -12,6 +9,10 @@ header {
 
 section {
   padding: 30px 0;
+}
+main{
+  padding: 30px 0;
+  min-height: 100vh;
 }
 
 .has-shadow {
@@ -23,4 +24,7 @@ section {
 }
 .fixed-top{
   z-index: 999;
+}
+.container-fluid{
+  overflow: hidden;
 }

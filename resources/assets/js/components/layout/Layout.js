@@ -8,22 +8,20 @@ import Navigation from '../../components/navigation/Navigation'
 import ScrollTop from '../../components/scroll-top/ScrollTop'
 import Footer from '../../components/footer/Footer'
 
-const containerStyle = {
-    paddingTop: '3.5rem'
-
-}
-
-//2469
-
 const Layout = (props) => {
-    return <div style={containerStyle}>
-        <Notifications/>
-        <Navigation/>
-        <main style={{minHeight: '100vh'}}>
-            {props.children}
-            <ScrollTop/>
-        </main>
-        <Footer/>
+    return <div className="container-fluid p-0">
+        <div className="row">
+            <div className="col">
+                <Notifications/>
+                <Navigation/>
+                <main>
+                    {props.children}
+                    <ScrollTop/>
+                </main>
+                <Footer/>
+            </div>
+        </div>
+
     </div>
 }
 
