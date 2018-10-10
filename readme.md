@@ -1,83 +1,24 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"><img src="https://camo.githubusercontent.com/c5d08fbbb9e85976fa8007719cdfa866b1176ab2/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f323030302f312a6b74396f7471486b3134425a494d4e727569473042412e706e67" width="150px" data-canonical-src="https://cdn-images-1.medium.com/max/2000/1*kt9otqHk14BZIMNruiG0BA.png" style="max-width:100%;"></p>
 
 ## Laravel 5.6 and React 16 boilerplate
 
 Please follow the guide.
 
 1. `git clone`
-2. `update the .env file along with database connection`
+2. update the `.env` file along with database connection
 3. `composer install && composer update`
 4. `php artisan migrate`
 5. `php artisan db:seed`
 6. `npm install`
-
-## Install Passport
-
-Open a terminal window and install the passport using following command
-
- ```
- php artisan passport:install
- ```
-## Update the Passport keys in .env file 
-Copy the keys for personal and password grants in `.env` file
-
-```
-
-PERSONAL_CLIENT_ID=1
-PERSONAL_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-PASSWORD_CLIENT_ID=2
-PASSWORD_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-## Set the App URL
-Set the APP_URL in `.env` file (e.g)
-
-```
-APP_URL=http://localhost:8000
-```
-
-## Set the APP Title
-Set the APP_TITLE in `resources/assets/js/values/Articles.js`
-
-```angular2html
-APP_TITLE='Your Blog Name'
-```
-
-## Run PHP Dev Server
-Either create a local dev url and map the link in webpack.mix.js file or open an other terminal window and copy paste the following command
-
-```
-php artisan serve
-```
-
-## Run Node Engine
-
-Compile assets one time.
-```
-npm run dev
-```
-**OR**
-or if you would like to compile assets on runtime then copy paste following command in terminal 
-
-`npm run watch` or `npm run watch-poll`
+7. `php artisan passport:install`
+8. Update the Passport keys in `.env` file 
+9. `APP_URL=http://localhost:8000`
+10. Set the `APP_TITLE` in resources/assets/js/utils/Values.js
+11. `php artisan serve`
+12. `npm run dev` or `npm run watch` or `npm run watch-poll`
 
 
-for complete list of instruction follow the link below
-[Laravel Mix](https://laravel.com/docs/5.4/mix#running-mix)
 
-
-TODO:
-
-- [x] Add Redux
-- [x] Add Passport for authentication
-- [x] User Login
-- [x] User Register
-- [x] Users Crud
-- [x] Articles Crud
-- [x] Form validation Client and Server
-- [ ] Reset Password
-- [x] Tests
-- [x] Upgrade to Laravel 5.6
-- [x] Upgrade to React 16
 
 
 
