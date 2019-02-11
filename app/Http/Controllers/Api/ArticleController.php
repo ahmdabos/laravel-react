@@ -106,7 +106,6 @@ class ArticleController extends Controller
     public function delete($id)
     {
         $article = Article::findOrFail($id);
-
         $article->delete();
 
         return response([], 200);

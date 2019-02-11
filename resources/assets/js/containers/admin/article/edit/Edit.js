@@ -108,10 +108,10 @@ class Edit extends Component {
     }
 
     render() {
-        return <main className="col-sm-12 col-md-12" role="main">
+        return <div className="col-sm-12 col-md-12" role="main">
             <h1>Edit</h1>
             { this.renderForm() }
-        </main>
+        </div>
     }
 }
 

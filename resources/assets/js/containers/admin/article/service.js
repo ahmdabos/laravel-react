@@ -58,6 +58,7 @@ export function articleEditRequest(id) {
             })
     }
 }
+
 export function articleUpdateRequest(params) {
     return dispatch => (
         new Promise((resolve, reject) => {

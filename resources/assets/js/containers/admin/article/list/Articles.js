@@ -14,15 +14,11 @@ import Pagination from './Pagination'
 import {Link} from 'react-router-dom'
 
 class Articles extends Component {
-
-
     constructor() {
         super()
         this.togglePublish = this.togglePublish.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.pageChange = this.pageChange.bind(this)
-
-
     }
 
     componentWillMount() {
@@ -81,7 +77,7 @@ class Articles extends Component {
         }
 
 
-        return <main className="col-sm-12 col-md-12" role="main">
+        return <div className="col-sm-12 col-md-12" role="main">
             <h1>Articles</h1>
             <table className="table table-responsive table-striped">
                 <thead className="thead-inverse">
@@ -100,7 +96,7 @@ class Articles extends Component {
                 </tbody>
             </table>
             <Pagination meta={this.props.meta} onChange={this.pageChange}/>
-        </main>
+        </div>
     }
 
 }

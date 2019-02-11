@@ -35,7 +35,6 @@ class Add extends Component {
             .then(() => {
                 this.setState({errors})
             })
-
     }
 
     handleSubmit(e) {
